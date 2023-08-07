@@ -17,15 +17,15 @@ let pens = 5 * NONE_SELECTED
 if (customerLocation === 'RSA') { 
     shipping = 400; 
     currency = 'R' 
-    if (shoes + batteries + pens + shirts >= 1000 && customers ==='1' ) {
+    if (shoes + batteries +toys+ pens + shirts >= 1000 && customers ==='1' ) {
       shipping = 0;
      }}
-     else if (customerLocation === 'NAM'){
+    else if (customerLocation === 'NAM'){
         shipping = 600;
         currency = '$' 
-        if (shoes + batteries + pens + shirts >= 60 && customers ==='1' ) {
+        if (shoes + batteries + pens + toys  + shirts >= 60 && customers ==='1' ) {
             shipping = 0;
-           }
+        }
     }
    else {
        shipping = 800;
@@ -33,9 +33,9 @@ if (customerLocation === 'RSA') {
 
 
 
-    if (customerLocation === 'NAM' && customers < 2) {
-        shipping = 0;
-    }
+    // if (customerLocation === 'NAM' && customers < 2) {
+    //     shipping = 0;
+    // }
    
 
 if (shipping === 0 && customers !== 1) { console.log(FREE_WARNING) }
