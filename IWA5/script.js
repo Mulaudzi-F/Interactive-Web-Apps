@@ -3,8 +3,9 @@ const BANNED_WARNIN = 'Unfortunately we do not ship to your country of residence
 const NONE_SELECTED = 0
 let customers = '1'
 const customerLocation = 'RSA'
-let currency = null
+let currency = undefined
 let shipping = null
+
 
 // product bought
 
@@ -40,5 +41,5 @@ if (customerLocation === 'RSA') {
 
 if (shipping === 0 && customers !== 1) { console.log(FREE_WARNING) }
 
-customerLocation === 'NK' ? console.log(BANNED_WARNIN) : console.log('price', currency,  shoes + batteries+ toys + pens + shirts + shipping)
+customerLocation === 'NK' ? console.log(BANNED_WARNIN) : console.log('price',currency, shoes + batteries+ toys + pens + shirts + shipping)
 

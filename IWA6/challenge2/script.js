@@ -9,7 +9,7 @@ const minuteOfDay = 00;
 
 // Only change below this line
 
-if ((hourOfDay !==undefined && minuteOfDay !== undefined) && (hourOfDay == '00' && minuteOfDay == '00') ){
+if ((hourOfDay !== undefined && minuteOfDay !== undefined) && (hourOfDay == '00' && minuteOfDay == '00') ){
 	const taxAsDecimal =(salary * parseInt(tax)) / 100 
   const startingAfterTax = salary * '1' - taxAsDecimal
 	const balance = startingAfterTax - transport - food - rent
@@ -17,3 +17,4 @@ if ((hourOfDay !==undefined && minuteOfDay !== undefined) && (hourOfDay == '00' 
     console.log(`R${balance.toFixed(2)}`)
 }
 	
+
