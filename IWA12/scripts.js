@@ -63,22 +63,22 @@ book3_checkin.style.color = 'black';
   else if (book1_status.textContent === 'shelf'){
     book1_status.style.color = STATUS_MAP.shelf.color
    
-    book1_checkout.disabled = !STATUS_MAP.overdue.canCheckout
-    book1_reserve.disabled = !STATUS_MAP.overdue.canReserve
-    book1_checkin.disabled = !STATUS_MAP.overdue.canCheckIn
+    book1_checkout.disabled = !STATUS_MAP.shelf.canCheckout
+    book1_reserve.disabled = !STATUS_MAP.shelf.canReserve
+    book1_checkin.disabled = !STATUS_MAP.shelf.canCheckIn
   }
   else if (book1_status.textContent === 'checkedOut'){
     book1_status.style.color = STATUS_MAP.checkedOut.color
-    book1_checkout.disabled = !STATUS_MAP.overdue.canCheckout
-    book1_reserve.disabled = !STATUS_MAP.overdue.canReserve
-    book1_checkin.disabled = !STATUS_MAP.overdue.canCheckIn
+    book1_checkout.disabled = !STATUS_MAP.checkedOut.canCheckout
+    book1_reserve.disabled = !STATUS_MAP.checkedOut.canReserve
+    book1_checkin.disabled = !STATUS_MAP.checkedOut.canCheckIn
   
   }
   else if (book1_status.textContent === 'reserved'){
     book1_status.style.color = STATUS_MAP.reserved.color
-    book1_checkout.disabled = !STATUS_MAP.overdue.canCheckout
-    book1_reserve.disabled = !STATUS_MAP.overdue.canReserve
-    book1_checkin.disabled = !STATUS_MAP.overdue.canCheckIn
+    book1_checkout.disabled = !STATUS_MAP.reserved.canCheckout
+    book1_reserve.disabled = !STATUS_MAP.reserved.canReserve
+    book1_checkin.disabled = !STATUS_MAP.reserved.canCheckIn
   }
   
 
@@ -92,24 +92,24 @@ book3_checkin.style.color = 'black';
   }
   else if (book2_status.textContent === 'shelf'){
     book2_status.style.color = STATUS_MAP.shelf.color
-    book2_checkout.disabled = !STATUS_MAP.overdue.canCheckout
-    book2_reserve.disabled = !STATUS_MAP.overdue.canReserve
-    book2_checkin.disabled = !STATUS_MAP.overdue.canCheckIn
+    book2_checkout.disabled = !STATUS_MAP.shelf.canCheckout
+    book2_reserve.disabled = !STATUS_MAP.shelf.canReserve
+    book2_checkin.disabled = !STATUS_MAP.shelf.canCheckIn
   }
   
   else if (book2_status.textContent === 'checkedOut'){
     book2_status.style.color = STATUS_MAP.checkedOut.color
     
-    book2_checkout.disabled = !STATUS_MAP.overdue.canCheckout
-    book2_reserve.disabled = !STATUS_MAP.overdue.canReserve
-    book2_checkin.disabled = !STATUS_MAP.overdue.canCheckIn
+    book2_checkout.disabled = !STATUS_MAP.checkedOut.canCheckout
+    book2_reserve.disabled = !STATUS_MAP.checkedOut.canReserve
+    book2_checkin.disabled = !STATUS_MAP.checkedOut.canCheckIn
   
   }
   else if (book2_status.textContent === 'reserved'){
     book2_status.style.color = STATUS_MAP.reserved.color
-    book2_checkout.disabled = !STATUS_MAP.overdue.canCheckout
-    book2_reserve.disabled = !STATUS_MAP.overdue.canReserve
-    book2_checkin.disabled = !STATUS_MAP.overdue.canCheckIn
+    book2_checkout.disabled = !STATUS_MAP.reserved.canCheckout
+    book2_reserve.disabled = !STATUS_MAP.reserved.canReserve
+    book2_checkin.disabled = !STATUS_MAP.reserved.canCheckIn
   
   }
 
@@ -123,23 +123,23 @@ if(book3_status.textContent === 'overdue'){
   }
   else if (book3_status.textContent === 'shelf'){
     book3_status.style.color = STATUS_MAP.shelf.color
-    book3_checkout.disabled = !STATUS_MAP.overdue.canCheckout
-    book3_reserve.disabled = !STATUS_MAP.overdue.canReserve
-    book3_checkin.disabled = !STATUS_MAP.overdue.canCheckIn
+    book3_checkout.disabled = !STATUS_MAP.shelf.canCheckout
+    book3_reserve.disabled = !STATUS_MAP.shelf.canReserve
+    book3_checkin.disabled = !STATUS_MAP.shelf.canCheckIn
       
   }
   else if (book3_status.textContent === 'checkedOut'){
     book3_status.style.color = STATUS_MAP.checkedOut.color
-    book3_checkout.disabled = !STATUS_MAP.overdue.canCheckout
-    book3_reserve.disabled = !STATUS_MAP.overdue.canReserve
-    book3_checkin.disabled = !STATUS_MAP.overdue.canCheckIn
+    book3_checkout.disabled = !STATUS_MAP.checkedOut.canCheckout
+    book3_reserve.disabled = !STATUS_MAP.checkedOut.canReserve
+    book3_checkin.disabled = !STATUS_MAP.checkedOut.canCheckIn
       
   }
   else if (book3_status.textContent === 'reserved'){
     book3_status.style.color = STATUS_MAP.reserved.color
-    book3_checkout.disabled = !STATUS_MAP.overdue.canCheckout
-    book3_reserve.disabled = !STATUS_MAP.overdue.canReserve
-    book3_checkin.disabled = !STATUS_MAP.overdue.canCheckIn
+    book3_checkout.disabled = !STATUS_MAP.reserved.canCheckout
+    book3_reserve.disabled = !STATUS_MAP.reserved.canReserve
+    book3_checkin.disabled = !STATUS_MAP.reserved.canCheckIn
       
   }
 
