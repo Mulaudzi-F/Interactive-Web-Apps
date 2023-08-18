@@ -23,10 +23,12 @@ const calcUser = () => {
 }
 
 const checkUser = () => {
+  
 	if (user && state === 'requesting') {
 		console.log(`User: ${user} (${calculated})`)
 	}
 }
+
 
 // Only allowed to change code above
 
