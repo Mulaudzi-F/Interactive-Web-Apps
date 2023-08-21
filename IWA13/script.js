@@ -38,11 +38,11 @@ calcUser()
 checkUser()
 calcUser()
 
-checkUser()
-calcUser()
+checkUser() 
+calcUser() 
 
 checkUser()
 calcUser()
 
 checkUser()
-calcUser()
+calcUser() 
