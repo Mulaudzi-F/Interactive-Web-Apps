@@ -19,7 +19,7 @@ const {lists:[,,[, third]]} = data
 const result = []
 
 const extractBiggest = () => {
-    let temp = Math.max(first[first.length -1] || 0, second[second.length -1], third[third.length -1])
+    let temp = Math.max(first[first.length -1] || 0, second[second.length -1] || 0, third[third.length -1] || 0)
 
     if(temp == first[first.length -1]){
         return first.pop()
