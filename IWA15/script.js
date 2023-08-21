@@ -9,23 +9,36 @@ const data = {
 
 // Only edit below
 
-const {lists:[first]} = data
-const { lists:[second] } = data
-const { lists:[third]} = data
+const [ignoreFirst, first] = data.lists[0];
+const [ignoreSecond, second] = data.lists[1];
+const [ignoreThird, third] = data.lists[2];
+
+
+// let  first = data.lists[0][1]
+// let second = data.lists[1][1]
+// let third = data.lists[2][1]
 
 const result = []
-
+ 
 const extractBiggest = () => {
-	if (first[-1] > second[-1]) {
-		return first
-	}
+	const firstValue = first.pop()
+	const secondValue = second.pop()
+	const thirdValue = third.pop()
 
-	if (third[-1] < 1) {
-		return second
-	}
 	
-	return third
+
+	if(firstValue >= secondValue &&  firstValue >= thirdValue) {
+		return firstValue
+	}
+	else if (secondValue >= firstValue && secondValue >= thirdValue){
+		return secondValue
+	}
+	else{
+		return thirdValue
+	}
 }
+
+
 
 // Only edit above
 
