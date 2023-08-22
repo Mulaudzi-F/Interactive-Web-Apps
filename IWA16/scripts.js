@@ -61,49 +61,59 @@ const MONTHS = [
         },
       },
     },
-  };
+  }
   
   // Only edit below this comment
   
   const createHtml = (athlete) => {
-    firstName, surname, id, races = athlete
-    [date], [time] = races.reverse()
+    // destructuring variable below
+
+   const {firstName, surname, id, races }= athlete;
+
+   // Accesing the date of the race
+   const date = new Date(races[races.length - 1].date)
+   const eventMonth = date.getMonth()
+   const eventDay = date.getDay()
+   const eventYear = date.getFullYear()
   
-    const fragment = document.createDocumentFragment();
+   // Acessing the time of the races
+  const time = races[races.length - 1].time
+  const sumTime = time.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+  // creating Elements
+   const section = document.querySelector('section')
+   const heading2 = document.createElement('h2');
+    heading2.textContent = id;
+    section.appendChild(heading2)
   
-    title = document.createElement(h2);
-    title= id;
-    fragment.appendChild(title);
+  const dd = document.createElement('dd')
+  section.appendChild(dd)
+
+  const dt = document.createElement('dt')
+  dt.textContent = `Athlete: ${firstName} ${surname}`
+  const dt2 = document.createElement('dt')
+  dt2.textContent = `Total Races: ${races.length}`
+  const dt3 = document.createElement('dt')
+  dt3.textContent = `Event Date (Latest):${eventDay} ${(MONTHS[eventMonth])} ${eventYear}`
+  const dt4 = document.createElement('dt')
+  dt4.textContent = `Total Time (Latest): 00:${sumTime}`
   
-    const list = document.createElement(dl);
   
-    const day = date.getDate();
-    const month = MONTHS[date.month];
-    const year = date.year;
   
-    first, second, third, fourth = timeAsArray;
-    total = first + second + third + fourth;
+
+//Apennding Elements
+
+
+  dd.appendChild(dt)
   
-    const hours = total / 60;
-    const minutes = total / hours / 60;
-  
-    list.innerHTML = /* html */ `
-      <dt>Athlete</dt>
-      <dd>${firstName surname}</dd>
-  
-      <dt>Total Races</dt>
-      <dd>${races}</dd>
-  
-      <dt>Event Date (Latest)</dt>
-      <dd>${day month year}</dd>
-  
-      <dt>Total Time (Latest)</dt>
-      <dd>${hours.padStart(2, 0) minutes}</dd>
-    `;
-  
-    fragment.appendChild(list);
+  dd.appendChild(dt2)
+  dd.appendChild(dt3)
+  dd.appendChild(dt4)
+
+
   }
   
-  [NM372], [SV782] = data
-  document.querySelector(NM372).appendChild(createHtml(NM372));
-  document.querySelector(SV782).appendChild(createHtml(SV782));
+  createHtml(data.response.data.NM372)
+  createHtml(data.response.data.SV782)
+
+
