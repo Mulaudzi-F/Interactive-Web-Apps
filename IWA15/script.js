@@ -10,37 +10,34 @@ const data = {
 
 // Only edit below
 
-// const [ignoreFirst, first] = data.lists[0];
-// const [ignoreSecond, second] = data.lists[1];
-// const [ignoreThird, third] = data.lists[2];
+const [ignoreFirst, first] = data.lists[0];
+const [ignoreSecond, second] = data.lists[1];
+const [ignoreThird, third] = data.lists[2];
 
-const first = data.lists[0][1];
-const second = data.lists[1][1]
-const third = data.lists[2][1]
+
+	
+
 
 const result = []
  
 const extractBiggest = () => {
+	let firstValue = first[first.length -1]
+	let  secondValue = second[second.length -1]
+	let thirdValue = third[third.length -1] 
 	
-	// let firstValue = first[first.length -1]
-	// let  secondValue = second[second.length -1]
-	// let thirdValue = third[third.length -1]
-	
- 	// const biggest = Math.max(first.pop(),second.pop(),third.pop())
-	// 	return biggest 
-
-// 	if(firstValue >= secondValue &&  firstValue >= thirdValue) {
-// 		 return first.pop()
+ 	const biggest = Math.max(firstValue || 0,secondValue || 0,thirdValue || 0)
 		
-// 	}
-// 	else if (secondValue >= firstValue && secondValue >= thirdValue){
-// 		return second.pop()
-// 	}
-// 	else{
-// 		return third.pop()
+
+	if(firstValue ==biggest) {
+		 return first.pop()
+		
+	}else if (secondValue == biggest){
+		return second.pop()
+	}else{
+		return third.pop()
 
  }
-	
+}
 
 
 
