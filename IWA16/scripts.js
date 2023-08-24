@@ -74,7 +74,7 @@ const MONTHS = [
    const date = new Date(races[races.length - 1].date)
  
    const eventMonth = date.getMonth()
-   const eventDay = date.getDay()
+   const eventDay = date.getDate()
    const eventYear = date.getFullYear()
   
    // Acessing the time of the races
