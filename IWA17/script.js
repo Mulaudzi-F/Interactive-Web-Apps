@@ -69,7 +69,7 @@ const createArray = (length) => {
              &nbsp;${value}&nbsp;
         </td>
         `
-
+ 
     return result
 }
 
