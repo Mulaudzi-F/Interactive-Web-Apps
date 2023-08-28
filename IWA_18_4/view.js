@@ -149,6 +149,6 @@ export const moveToColumn = (id, newColumn) => {
  */
 html.other.add.focus()
 
-
+                                                                  
 html.add.table.appendChild(createTableOptionsHtml())
 html.edit.table.appendChild(createTableOptionsHtml())

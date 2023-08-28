@@ -1,3 +1,5 @@
+import { html, createOrderHtml, updateDraggingHtml, moveToColumn  } from "./view";
+import { createOrderData,updateDragging } from "./data";
 /**
  * A handler that fires when a user drags over any element inside a column. In
  * order to determine which column the user is dragging over the entire event
@@ -9,6 +11,7 @@
  *
  * @param {Event} event 
  */
+
 const handleDragOver = (event) => {
     event.preventDefault();
     const path = event.path || event.composedPath()
@@ -31,8 +34,16 @@ const handleDragOver = (event) => {
 const handleDragStart = (event) => {}
 const handleDragEnd = (event) => {}
 const handleHelpToggle = (event) => {}
-const handleAddToggle = (event) => {}
-const handleAddSubmit = (event) => {}
+const handleAddToggle = (event) => {
+   
+   html.other.add.style.color = 'red'
+}
+const handleAddSubmit = (event) => {
+ 
+   
+
+}
+   
 const handleEditToggle = (event) => {}
 const handleEditSubmit = (event) => {}
 const handleDelete = (event) => {}
@@ -57,3 +68,4 @@ for (const htmlColumn of Object.values(html.columns)) {
 for (const htmlArea of Object.values(html.area)) {
     htmlArea.addEventListener('dragover', handleDragOver)
 }
+
