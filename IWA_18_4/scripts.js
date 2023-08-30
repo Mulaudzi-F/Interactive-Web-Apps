@@ -49,10 +49,16 @@ const handleHelpToggle = (event) => {
 //add toggle function
 const handleAddToggle = (event) => {
    html.add.overlay.style.display = 'block'
+   
   
    html.add.title.value ='';
-   html.add.table.value = TABLES[0];
-   html.add.title.focus()
+   html.add.table.value = TABLES[0]
+
+   html.add.cancel.addEventListener('click', () =>{
+    html.add.overlay.style.display = 'none';
+    html.other.add.focus()
+   })
+
 }
 
 // add handleAddSubmit function
@@ -60,23 +66,25 @@ const handleAddToggle = (event) => {
 
 const handleAddSubmit = (event) => {
  event.preventDefault() 
-
+ html.edit.overlay.style.display = 'block'
  const title = html.add.title.value;
  const table = html.add.table.value;
+ 
 
  if(title && table){
     const order = createOrderData({title, table, column: 'ordered'})
     const orderHtml = createOrderHtml(order);
     html.columns.ordered.appendChild(orderHtml) 
     html.add.overlay.style.display = 'none'
+
     html.other.add.focus()
  } 
+html.edit.cancel.addEventListener('click', () =>{
+    html.edit.overlay.style.display = 'none'
+}) 
 
 }
-html.add.cancel.addEventListener('click', () =>{
-    html.add.overlay.style.display = 'none';
-    html.other.add.focus()
-})
+
 
 let activeEditOrderId = null;
 
