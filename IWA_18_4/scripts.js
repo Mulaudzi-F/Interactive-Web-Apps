@@ -1,5 +1,5 @@
 import { html,  updateDraggingHtml, createOrderHtml, moveToColumn } from "./view.js";
-import { updateDragging, createOrderData, TABLES } from "./data.js";
+import {state, updateDragging, createOrderData, TABLES } from "./data.js";
 
 /**
  * A handler that fires when a user drags over any element inside a column. In
@@ -30,6 +30,7 @@ const handleDragOver = (event) => {
     updateDragging({ over: column })
     updateDraggingHtml({ over: column })
 }
+
 
 
 const handleDragStart = (event) => {}
@@ -66,7 +67,7 @@ const handleAddToggle = (event) => {
 
 const handleAddSubmit = (event) => {
  event.preventDefault() 
- html.edit.overlay.style.display = 'block'
+ //html.edit.overlay.style.display = 'block'
  const title = html.add.title.value;
  const table = html.add.table.value;
  
@@ -81,6 +82,7 @@ const handleAddSubmit = (event) => {
  } 
 html.edit.cancel.addEventListener('click', () =>{
     html.edit.overlay.style.display = 'none'
+    html.other.add.focus()
 }) 
 
 }
@@ -89,24 +91,42 @@ html.edit.cancel.addEventListener('click', () =>{
 let activeEditOrderId = null;
 
 // handile edit function
-const handleEditToggle = (event) => {
-    const clickedOrder = event.target.closest('.order') 
-   
-    if(clickedOrder){
+const handleEditToggle = (event) => { 
+    event.preventDefault()
     
-        activeEditOrderId = clickedOrder.dataset.id
-        const order = state.orders[activeEditOrderId]
-
-        if(order){
-            html.edit.id.value = order.id;
-            html.edit.title.value = order.title;
-            html.edit.table.value = order.table;
-            html.edit.column.value = order.column;
-            html.edit.overlay.style.display = 'block';
-            html.edit.title.focus()
-        }
-    }
-}
+    const clickedOrder = event.target.closest('.order') 
+    activeEditOrderId = clickedOrder.dataset.id
+    clickedOrder.addEventListener('click', () =>{
+        html.edit.overlay.style.display = 'block'
+         state.orders.id = clickedOrder.dataset.id;
+         state.orders.title = html.edit.title.value;
+         
+         state.orders.table = html.edit.table.value ;
+         state.orders.column = html.edit.column.value ;
+         console.log(state.orders.id)
+        html.edit.title.focus()
+    
+    })
+    html.edit.cancel.addEventListener('click', () =>{
+        html.edit.overlay.style.display = 'none;'
+        html.other.add.focus()
+    })
+    activeEditOrderId = null
+    // if(clickedOrder){
+    
+    //     activeEditOrderId = clickedOrder.dataset.id
+        
+    //     const order = state.orders[activeEditOrderId]
+    //     console.log(order)
+    //     if(order){
+    //         html.edit.id.value = order.id;
+    //         html.edit.title.value = order.title;
+    //         html.edit.table.value = order.table;
+    //         html.edit.column.value = order.column;
+    //         html.edit.title.focus()
+    //     }
+    // }
+ }
 
 // edit submit function
 
@@ -117,14 +137,16 @@ const handleEditSubmit = (event) => {
     const table = html.edit.table.value;
     const column = html.edit.column.value;
 
-    if(state.orders[id]){
-        const order = state.orders[id];
-        order.title = title;
-        order.table = table;
-        order.column = column;
-        moveToColumn(id, column);
+    if(state.orders.id){
+        const order = state.orders.id;
+         state.orders.title = title;
+        state.orders.table = table;
+        state.orders.column = column;
+        moveToColumn(order, column);
+        console.log(document.querySelector(`[data-id="${id}"]`) )
         html.edit.overlay.style.display = 'none';
-        activeEditOrderId = null;
+        html.other.add.focus()
+       // activeEditOrderId = null;
     }
 }
 const handleDelete = (event) => {
@@ -135,15 +157,12 @@ const handleDelete = (event) => {
             delete state.orders[activeEditOrderId];
             activeEditOrderId = null;
             html.edit.overlay.style.display = 'none'
-
+            html.other.add.focus()
         }
     }
 }
 
-html.edit.cancel.addEventListener('click', () =>{
-    html.edit.overlay.style.display = 'none;'
-    activeEditOrderId = null
-})
+
 
 html.add.cancel.addEventListener('click', handleAddToggle)
 html.other.add.addEventListener('click', handleAddToggle)
