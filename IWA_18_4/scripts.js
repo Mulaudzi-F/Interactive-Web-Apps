@@ -88,7 +88,7 @@ html.edit.cancel.addEventListener('click', () =>{
 }
 
 
-let activeEditOrderId = null;
+let activeEditOrderId = null
 
 // handile edit function
 const handleEditToggle = (event) => { 
@@ -111,7 +111,7 @@ const handleEditToggle = (event) => {
         html.edit.overlay.style.display = 'none;'
         html.other.add.focus()
     })
-    activeEditOrderId = null
+    
     // if(clickedOrder){
     
     //     activeEditOrderId = clickedOrder.dataset.id
@@ -137,13 +137,14 @@ const handleEditSubmit = (event) => {
     const table = html.edit.table.value;
     const column = html.edit.column.value;
 
-    if(state.orders.id){
+    if(activeEditOrderId){
         const order = state.orders.id;
-         state.orders.title = title;
+         state.orders.title =  title;
         state.orders.table = table;
         state.orders.column = column;
+        console.log(state.orders)
         moveToColumn(order, column);
-        console.log(document.querySelector(`[data-id="${id}"]`) )
+      
         html.edit.overlay.style.display = 'none';
         html.other.add.focus()
        // activeEditOrderId = null;
