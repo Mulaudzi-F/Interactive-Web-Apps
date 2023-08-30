@@ -79,6 +79,7 @@ const MONTHS = [
   
    // Acessing the time of the races
   const time = races[races.length - 1].time
+  
   const sumTime = time.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
   // creating Elements
