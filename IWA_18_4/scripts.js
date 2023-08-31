@@ -12,7 +12,7 @@ import {state, updateDragging, createOrderData, TABLES } from "./data.js";
  *
  * @param {Event} event 
  */
-
+console.log(html)
 const handleDragOver = (event) => {
     event.preventDefault();
     const path = event.path || event.composedPath()
@@ -28,21 +28,31 @@ const handleDragOver = (event) => {
 
     if (!column) return
     updateDragging({ over: column })
-    updateDraggingHtml({ over: column })
+    updateDraggingHtml({ over: column }) ;
 }
 
 
+const handleDragStart = (event) => { 
+    const orderId = event.target.dataset.id;
+    event.dataTransfer.setData("text/plain", orderId);
 
-const handleDragStart = (event) => {}
-const handleDragEnd = (event) => {} 
+    }
+
+const handleDragEnd = (event) => {
+    updateDragging({ over: null });
+    updateDraggingHtml({});
+
+} 
 
 // HELP event handler
 const handleHelpToggle = (event) => {
+    html.other.grid.style.background = 'rgba(0, 0, 0, 0.5)'
     html.help.overlay.style.display = 'block'
     html.other.add.focus()  
 
     html.help.cancel.addEventListener('click', () =>{
         html.help.overlay.style.display = 'none'
+        html.other.grid.style.background = 'none'
         html.other.add.focus()
     })
    }
@@ -50,12 +60,13 @@ const handleHelpToggle = (event) => {
 //add toggle function
 const handleAddToggle = (event) => {
    html.add.overlay.style.display = 'block'
-   
+   html.other.grid.style.background = 'rgba(0, 0, 0, 0.5)'
   
    html.add.title.value ='';
    html.add.table.value = TABLES[0]
 
    html.add.cancel.addEventListener('click', () =>{
+    html.other.grid.style.background = 'none'
     html.add.overlay.style.display = 'none';
     html.other.add.focus()
    })
@@ -77,11 +88,12 @@ const handleAddSubmit = (event) => {
     const orderHtml = createOrderHtml(order);
     html.columns.ordered.appendChild(orderHtml) 
     html.add.overlay.style.display = 'none'
-
+    html.other.grid.style.background = 'none'
     html.other.add.focus()
  } 
 html.edit.cancel.addEventListener('click', () =>{
     html.edit.overlay.style.display = 'none'
+    html.other.grid.style.background = 'none'
     html.other.add.focus()
 }) 
 
@@ -93,9 +105,10 @@ let activeEditOrderId = null
 // handile edit function
 const handleEditToggle = (event) => { 
     event.preventDefault()
-    
+    html.other.grid.style.background = 'rgba(0, 0, 0, 0.5)'
     const clickedOrder = event.target.closest('.order') 
-    activeEditOrderId = clickedOrder.dataset.id
+    activeEditOrderId = clickedOrder.dataset.id 
+    console.log(activeEditOrderId)
     clickedOrder.addEventListener('click', () =>{
         html.edit.overlay.style.display = 'block'
          state.orders.id = clickedOrder.dataset.id;
@@ -103,11 +116,12 @@ const handleEditToggle = (event) => {
          
          state.orders.table = html.edit.table.value ;
          state.orders.column = html.edit.column.value ;
-         console.log(state.orders.id)
-        html.edit.title.focus()
-    
+         
+        // html.edit.title.focus()
+        html.other.add.focus()
     })
     html.edit.cancel.addEventListener('click', () =>{
+        html.other.grid.style.background = 'none'
         html.edit.overlay.style.display = 'none;'
         html.other.add.focus()
     })
@@ -131,18 +145,25 @@ const handleEditToggle = (event) => {
 // edit submit function
 
 const handleEditSubmit = (event) => {
+
+    html.other.grid.style.background = 'none'
     event.preventDefault();
     const id = html.edit.id.value;
     const title = html.edit.title.value;
     const table = html.edit.table.value;
     const column = html.edit.column.value;
+   
+    
 
     if(activeEditOrderId){
         const order = state.orders.id;
          state.orders.title =  title;
         state.orders.table = table;
         state.orders.column = column;
-        console.log(state.orders)
+        
+        document.querySelector('[data-order-title]').textContent =title;
+        document.querySelector('[data-order-table]').textContent = table; 
+        html.other.add.focus()
         moveToColumn(order, column);
       
         html.edit.overlay.style.display = 'none';
@@ -158,6 +179,8 @@ const handleDelete = (event) => {
             delete state.orders[activeEditOrderId];
             activeEditOrderId = null;
             html.edit.overlay.style.display = 'none'
+            html.other.grid.style.background = 'none'
+
             html.other.add.focus()
         }
     }
