@@ -33,15 +33,14 @@ const handleDragOver = (event) => {
 
 
 const handleDragStart = (event) => { 
-    const orderId = event.target.dataset.id;
-    event.dataTransfer.setData("text/plain", orderId);
-
+    const order = event.target
+    updateDragging(order)
+    updateDraggingHtml(order)
     }
 
-const handleDragEnd = (event) => {
-    updateDragging({ over: null });
-    updateDraggingHtml({});
-
+const handleDragEnd = (event) => { 
+    moveToColumn(event.target.dataset.id, state.dragging.over)
+    
 } 
 
 // HELP event handler
