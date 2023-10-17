@@ -1,3 +1,11 @@
+// Define the data object
+/**
+ * 
+ * 
+ * 
+ * Data object
+ * @type {DataObject}
+ */
 
 const data = {
 	lists: [
@@ -14,12 +22,27 @@ const [ignoreFirst, first] = data.lists[0];
 const [ignoreSecond, second] = data.lists[1];
 const [ignoreThird, third] = data.lists[2];
 
-
+// Define the result array
+/**
+ * Result Array.
+ * @type {number[]} 
+ */
 	
-
-
 const result = []
  
+//@ts-check
+
+/**
+ * Represents a data object with lists.
+ * @typedef {object} DataObject
+ * @property {Array<Array<string | number[]>>} lists - the lists of data.
+ */
+
+/**
+ * Extracts the biggest number from the lists
+ * @returns {number} The biggest number from the lists
+ */
+
 const extractBiggest = () => {
 	let firstValue = first[first.length -1]
 	let  secondValue = second[second.length -1]

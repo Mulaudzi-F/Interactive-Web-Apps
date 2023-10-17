@@ -5,9 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet.css" href="style.css">
     <title>Interactive web apps</title>
+    <link href="style.css" rel="stylesheet"></link>
     <script src="./script.js" defer></script>
 </head>
 <body>
-    
+    <header class="header">
+        <h1 class="header__title">Tally Count</h1>
+      </header>
+      <!-- <aside class="controls">
+        <label>
+          <span>Display</span>
+          <select>
+            <option>Single</option>
+            <option>Multiple</option>
+          </select>
+        </label>
+  
+        <label>
+          <span>Counter</span>
+          <select>
+            <option>Counter 1</option>
+            <option>Counter 2</option>
+            <option>Counter 3</option>
+          </select>
+        </label>
+        <button>Settings</button>
+      </aside> -->
+      <main class="counter">
+        <input class="counter__value" data-key="number" readonly value="0" />
+        <div class="counter__actions">
+          <button
+            class="counter__button counter__button_first"
+            data-key="subtract"
+          >
+            -
+          </button>
+          <button class="counter__button" data-key="add">+</button>
+        </div>
+      </main>
+      <footer class="footer">
+        Inspired by
+        <a class="footer__link" href="http://tallycount.app/">Tally Count</a>
+        Note that this is merly a student practice project for learning
+        JavaScript.
+      </footer>
 </body>
 </html>
