@@ -44,7 +44,7 @@ body {
 background: var(--color-dark-grey);
 }
 
-.countervalue {
+.counter__value {
     width: 100%;
     height: 15rem;
     text-align: center;
@@ -56,11 +56,11 @@ background: var(--color-dark-grey);
     border-bottom: 1px solid var(--color-light-grey);
 }
 
-.counteractions {
+.counter__actions {
     display: flex;
 }
 
-.counterbutton{
+.counter__button{
     background: none;
     width: 50%;
     border-width: 0;
@@ -72,7 +72,7 @@ background: var(--color-dark-grey);
     transform: translateY(0);
 }
 
-.counterbutton:disabled {
+.counter__button:disabled {
     opacity: 0.2;
 }
 
@@ -80,10 +80,9 @@ background: var(--color-dark-grey);
     background: var(--color-medium-grey);
     transform: translateY(2%);
 }
-.counterbutton_first{
+.counter__button_first{
     border-right: 1px solid var(--color-light-grey);
 }
-
 
 .footer {
     background: var(--color-dark-grey);
